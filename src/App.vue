@@ -30,13 +30,6 @@ export default {
       }]
     }
   },
-  // computed: {
-  //   randomType: function (){
-  //     const types = ["color", "sound", "size"];
-  //     const randomType = types[Math.floor(Math.random() * types.length)];
-  //     return randomType
-  //   }
-  // },
   methods: {
     addCounter: function (){
       this.counter += 1
