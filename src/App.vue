@@ -1,24 +1,40 @@
 <template>
   <div id="app">
-    <h1 v-if= "buttons.length === 1">Howdy</h1>
-    <ul> 
-      <li v-for="button in buttons" :key="button.id"> {{button.type}}</li>
-    </ul>
+    <div class="starter-info" v-if= "counter === 0">
+      <h1>Howdy</h1>
+      <button @click="counter += 1">start</button>
+    </div>
+    <h2>{{counter}}</h2>
+   
+    <button v-for="button in buttons" :key="button.id">
+      <RandomButton />
+    </button>
 
   </div>
 </template>
 
 <script>
+import RandomButton from "@/components/RandomButton"
 export default {
+  components: {
+    RandomButton,
+  },
   data(){
     return{
+      counter: 0,
       buttons: [{
-        type: "start",
-        id: 1,
+       
       }]
     }
   }
 }
+// function addCounter(){
+//   return this.counter += 1
+// }
+// function addButton(){
+//   addCounter();
+//   buttons.push({type: "test", id: counter})
+// }
 
 </script>
 
