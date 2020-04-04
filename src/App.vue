@@ -6,9 +6,12 @@
     </div>
     <h2>{{counter}}</h2>
   <div v-if="counter > 0" class="new-buttons"> 
-    <button v-on:click="addButton" v-for="button in buttons" :key="button.id">
+    <div v-on:click="addButton" v-for="button in buttons" :key="button.id" class="random-buttons">
       <RandomButton :button="button"/>
-    </button>
+    </div>
+    <!-- <button v-on:click="addButton" v-for="button in colorButtons" :key="button.id">
+      <ColorButton :button="button"/>
+    </button> -->
   </div>
 
   </div>
@@ -16,6 +19,8 @@
 
 <script>
 import RandomButton from "@/components/RandomButton"
+
+
 export default {
   components: {
     RandomButton,
@@ -23,11 +28,16 @@ export default {
   data(){
     return{
       counter: 0,
-      buttonTypes: ["color", "sound", "size"], 
+      buttonTypes: ["color", "sound", "size",], 
       buttons: [{
         type: "color",
         id: this.counter 
-      }]
+      }],
+    }
+  },
+  computed: {
+    colorButtons: function(){
+      return this.buttons.filter(button => button.type === "color")
     }
   },
   methods: {
@@ -49,7 +59,15 @@ export default {
 </script>
 
 <style lang="scss">
+  div{
+    background: beige;
+  }
   .starter-info button {
     height: 25px;
+  }
+  .new-buttons{
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-gap: 4px;
   }
 </style>
