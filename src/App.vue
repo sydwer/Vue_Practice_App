@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <h1>Howdy</h1>
+    <h1 v-if= "buttons.length === 1">Howdy</h1>
+    <ul> 
+      <li v-for="button in buttons" :key="button.id"> {{button.type}}</li>
+    </ul>
+
   </div>
 </template>
 
@@ -10,10 +14,12 @@ export default {
     return{
       buttons: [{
         type: "start",
+        id: 1,
       }]
     }
   }
 }
+
 </script>
 
 <style lang="scss">
