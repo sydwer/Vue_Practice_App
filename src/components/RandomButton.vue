@@ -1,10 +1,12 @@
 <template>
-    <p> New Button</p>
+    <p> {{button.type}}</p>
 </template>
 
 <script>
 export default {
-    
+    props: {
+        button: Object,
+    }
 }
 </script>
 
